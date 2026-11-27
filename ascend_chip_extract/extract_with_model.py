@@ -22,7 +22,10 @@ HERE = Path(__file__).resolve().parent
 SOURCES = HERE / 'sources'
 ENDPOINT = os.environ.get('HY4_ENDPOINT', 'http://127.0.0.1:8317/v1/chat/completions')
 MODEL = os.environ.get('HY4_MODEL', 'cn:hy4flash-free')
-KEY = os.environ.get('HY4_KEY', 'sk-999999')
+KEY = os.environ.get('HY4_KEY', '')
+
+if not KEY:
+    raise SystemExit('set HY4_KEY to the CLIProxyAPI key before running (the key is never stored in this repo)')
 
 SCHEMA = {
     'schema': 'infrarsi-ascend-chips-v1',

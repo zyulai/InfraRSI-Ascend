@@ -53,6 +53,7 @@ Known gaps (marked in `missing` and/or left null):
 
 ```bash
 cd ~/Desktop/InfraRSI-Ascend/ascend_chip_extract
+export HY4_KEY=<the CLIProxyAPI key>       # never stored in the repository
 /usr/bin/python3 extract_with_model.py --batch a --max-tokens 48000
 /usr/bin/python3 extract_with_model.py --batch b --max-tokens 48000
 /usr/bin/python3 validate_chips.py
