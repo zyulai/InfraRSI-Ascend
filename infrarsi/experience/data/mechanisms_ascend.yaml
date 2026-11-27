@@ -1,0 +1,54 @@
+# Ascend mechanisms, merged into data/mechanisms.yaml by registry.mechanisms().
+# Same schema as the CUDA registry: class kernel = the sign transfers across
+# device classes; balance = needs the same device class and layout.
+# The aliases are the environment variables documented in infrarsi/ascend/knobs.py.
+
+npu_task_queue: {class: kernel, states: ["0", "1", "2"], default: "1",
+                 aliases: {any: [{env: TASK_QUEUE_ENABLE, value: state}]},
+                 notes: "torch_npu task-queue offload; 2 is full offload (lower host overhead, more device memory)"}
+npu_combined_ops: {class: kernel, states: ["0", "1"], default: "0",
+                   aliases: {any: [{env: COMBINED_ENABLE, value: state}]},
+                   notes: "combine small elementwise/optimizer kernels into one launch"}
+npu_stream_memory_reuse: {class: balance, states: ["0", "1"], default: "0",
+                          aliases: {any: [{env: MULTI_STREAM_MEMORY_REUSE, value: state}]},
+                          notes: "reuse memory across streams instead of one pool per stream; saves HBM"}
+npu_allocator: {class: balance, states: [off, expandable, gc, expandable_gc], default: off,
+                aliases: {any: [{env: PYTORCH_NPU_ALLOC_CONF, map: {"": off, "expandable_segments:True": expandable,
+                                                                     "garbage_collection_threshold:0.9": gc,
+                                                                     "expandable_segments:True,garbage_collection_threshold:0.9": expandable_gc}}]},
+                notes: "caching allocator: expandable segments reduce fragmentation; GC threshold trades HBM for allocator time"}
+hccl_buffsize: {class: balance, states: int, default: "200",
+                aliases: {any: [{env: HCCL_BUFFSIZE, value: state}]},
+                notes: "HCCL buffer in MB per rank; 200 MB x 8 ranks is already 1.6 GB of HBM"}
+hccl_algo: {class: balance, states: [auto, Ring, Tree, HalvingDoubling], default: auto,
+            aliases: {any: [{env: HCCL_ALGO, map: {"": auto}}]},
+            notes: "collective algorithm; auto lets HCCL choose by message size and topology"}
+hccl_deterministic: {class: kernel, states: ["false", "true"], default: "false",
+                     aliases: {any: [{env: HCCL_DETERMINISTIC, value: state}]},
+                     notes: "deterministic reduction order: bitwise repeatable, usually slower on large reductions"}
+hccl_intra_roce: {class: balance, states: ["0", "1"], default: "0",
+                  aliases: {any: [{env: HCCL_INTRA_ROCE_ENABLE, value: state}]},
+                  notes: "route intra-node collectives over RoCE instead of HCCS; a workaround, never faster when HCCS is healthy"}
+hccl_intra_pcie: {class: balance, states: ["0", "1"], default: "0",
+                  aliases: {any: [{env: HCCL_INTRA_PCIE_ENABLE, value: state}]},
+                  notes: "force PCIe for intra-node collectives; for cards without HCCS, much slower than HCCS"}
+npu_cpu_affinity: {class: balance, states: [off, numa, numa_mgmt], default: off,
+                   aliases: {any: [{env: CPU_AFFINITY_CONF, map: {"": off, "1": numa, "2": numa_mgmt}}]},
+                   notes: "bind the process to its NPU-local NUMA node"}
+npu_launch_blocking: {class: kernel, states: ["0", "1"], default: "0",
+                      aliases: {any: [{env: ASCEND_LAUNCH_BLOCKING, value: state}]},
+                      notes: "synchronize after every launch: debugging only, removes all overlap"}
+npu_inf_nan_mode: {class: kernel, states: ["0", "1"], default: "0",
+                   aliases: {any: [{env: INF_NAN_MODE_ENABLE, value: state}]},
+                   notes: "1 trades the overflow-check mode (which makes Inf/NaN visible) for speed"}
+npu_aclnn_cache: {class: balance, states: int, default: "10000",
+                  aliases: {any: [{env: ACLNN_CACHE_LIMIT, value: state}]},
+                  notes: "aclnn kernel descriptor cache size; a larger cache avoids re-compilation of many small shapes"}
+npu_fusion_ops: {class: kernel, states: [off, on], default: off,
+                 notes: "replace unfused RMSNorm/SwiGLU/RoPE/cross-entropy with torch_npu fused ops"}
+npu_attention_backend: {class: kernel, states: [math, fusion, prompt_flash, flash], default: math,
+                        notes: "torch_npu.npu_fusion_attention vs npu_prompt_flash_attention for long context"}
+npu_gemm_backend: {class: kernel, states: [torch, deep_gemm, catlass, triton], default: torch,
+                   notes: "aclnn GEMM vs DeepGEMM-Ascend / CATLASS / Triton-Ascend; shapes must meet each library's alignment"}
+npu_moe_dispatch: {class: balance, states: [alltoall, distribute], default: alltoall,
+                   notes: "alltoall through HCCL vs npu_moe_distribute_dispatch/combine"}

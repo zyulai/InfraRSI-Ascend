@@ -34,12 +34,20 @@ def state_owners(name: str, limit: int = 3) -> list[str]:
 
 @lru_cache(maxsize=None)
 def mechanisms() -> dict:
-    return yaml.safe_load((DATA / 'mechanisms.yaml').read_text(encoding='utf-8')) or {}
+    out = yaml.safe_load((DATA / 'mechanisms.yaml').read_text(encoding='utf-8')) or {}
+    extra = DATA / 'mechanisms_ascend.yaml'
+    if extra.is_file():                                  # the Ascend edition's mechanisms, merged without touching the CUDA registry
+        out.update(yaml.safe_load(extra.read_text(encoding='utf-8')) or {})
+    return out
 
 
 @lru_cache(maxsize=None)
 def gpus() -> dict:
-    return yaml.safe_load((DATA / 'gpus.yaml').read_text(encoding='utf-8')) or {}
+    out = yaml.safe_load((DATA / 'gpus.yaml').read_text(encoding='utf-8')) or {}
+    extra = DATA / 'gpus_ascend.yaml'
+    if extra.is_file():                                  # Ascend NPU classes, same transfer-facing shape
+        out.update(yaml.safe_load(extra.read_text(encoding='utf-8')) or {})
+    return out
 
 
 @lru_cache(maxsize=None)

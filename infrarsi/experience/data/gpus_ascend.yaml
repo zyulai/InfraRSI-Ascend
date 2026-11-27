@@ -1,0 +1,227 @@
+# Ascend NPU classes extracted from the kernel repositories; the full per-card record and its
+# provenance is in infrarsi/ascend/data/chips.yaml (repo) + chips_public.yaml (public supplement).
+'910':
+  aliases:
+  - Ascend910
+  arch: dav-1001
+  memory_gib: 32
+  bf16_tflops_peak: 256
+  hbm_tbps: 1.5
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'L1 1024KB, UB 256KB, L0C 256KB; sources: npu-hardware-params.md §0 产品映射表;
+    npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.1 DAV_1001 — Ascend910
+    系列'
+310P1:
+  aliases:
+  - Ascend310P1
+  arch: dav-2002
+  memory_gib: 24
+  hbm_tbps: 0.2
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'L1 1024KB, UB 256KB, L0C 256KB; sources: npu-hardware-params.md §0 产品映射表;
+    npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.2 DAV_2002 — Ascend310P
+    系列'
+310P3:
+  aliases:
+  - Ascend310P3
+  arch: dav-2002
+  memory_gib: 24
+  hbm_tbps: 0.2
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'L1 1024KB, UB 256KB, L0C 256KB; sources: npu-hardware-params.md §0 产品映射表;
+    npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.2 DAV_2002 — Ascend310P
+    系列'
+310P5:
+  aliases:
+  - Ascend310P5
+  arch: dav-2002
+  memory_gib: 24
+  hbm_tbps: 0.2
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'L1 1024KB, UB 256KB, L0C 256KB; sources: npu-hardware-params.md §0 产品映射表;
+    npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.2 DAV_2002 — Ascend310P
+    系列'
+310P7:
+  aliases:
+  - Ascend310P7
+  arch: dav-2002
+  memory_gib: 24
+  hbm_tbps: 0.2
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'L1 1024KB, UB 256KB, L0C 256KB; sources: npu-hardware-params.md §0 产品映射表;
+    npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.2 DAV_2002 — Ascend310P
+    系列'
+910B1:
+  aliases:
+  - Ascend910B1
+  - 910B1
+  arch: dav-2201
+  memory_gib: 64
+  bf16_tflops_peak: 400
+  hbm_tbps: 1.6
+  intra_link_gbps: 392
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A2; 24 cube / 48 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.3 DAV_2201'
+910B2:
+  aliases:
+  - Ascend910B2
+  - Ascend 910B2
+  - 910B2
+  arch: dav-2201
+  memory_gib: 64
+  bf16_tflops_peak: 376
+  hbm_tbps: 1.6
+  intra_link_gbps: 392
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A2; 24 cube / 48 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.3 DAV_2201'
+910B2C:
+  aliases:
+  - Ascend910B2C
+  - 910B2C
+  arch: dav-2201
+  memory_gib: 64
+  bf16_tflops_peak: 376
+  hbm_tbps: 1.6
+  intra_link_gbps: 392
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A2; 24 cube / 48 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.3 DAV_2201'
+910B3:
+  aliases:
+  - Ascend910B3
+  - 910B3
+  arch: dav-2201
+  memory_gib: 64
+  bf16_tflops_peak: 313
+  hbm_tbps: 1.6
+  intra_link_gbps: 392
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A2; 20 cube / 40 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.3 DAV_2201'
+910B4:
+  aliases:
+  - Ascend910B4
+  - 910B4
+  arch: dav-2201
+  memory_gib: 32
+  bf16_tflops_peak: 280
+  hbm_tbps: 0.8
+  intra_link_gbps: 392
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A2; 20 cube / 40 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.3 DAV_2201'
+'910_93':
+  aliases:
+  - Ascend910_93
+  - '910_93'
+  arch: dav-2201
+  memory_gib: 128
+  bf16_tflops_peak: 800
+  hbm_tbps: 3.2
+  intra_link_gbps: 784
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A3; 24 cube / 48 vector cores; L1 512KB, UB 192KB, L0C 128KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §0 运行时映射 note;
+    npu-hardware-params.md §1 跨架构一致参数'
+310B1:
+  aliases:
+  - Ascend310B1
+  arch: dav-3002
+  memory_gib: null
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: '1 cube / 1 vector cores; L1 1024KB, UB 248KB, L0C 128KB; sources: npu-hardware-params.md
+    §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.4 DAV_3002
+    — Ascend310B 系列'
+310B2:
+  aliases:
+  - Ascend310B2
+  arch: dav-3002
+  memory_gib: null
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: '1 cube / 1 vector cores; L1 1024KB, UB 248KB, L0C 128KB; sources: npu-hardware-params.md
+    §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.4 DAV_3002
+    — Ascend310B 系列'
+310B3:
+  aliases:
+  - Ascend310B3
+  arch: dav-3002
+  memory_gib: null
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: '1 cube / 1 vector cores; L1 1024KB, UB 248KB, L0C 128KB; sources: npu-hardware-params.md
+    §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.4 DAV_3002
+    — Ascend310B 系列'
+310B4:
+  aliases:
+  - Ascend310B4
+  arch: dav-3002
+  memory_gib: null
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: '1 cube / 1 vector cores; L1 1024KB, UB 248KB, L0C 128KB; sources: npu-hardware-params.md
+    §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.4 DAV_3002
+    — Ascend310B 系列'
+950DT:
+  aliases:
+  - Ascend950DT
+  arch: dav-3510
+  memory_gib: 144
+  bf16_tflops_peak: 547
+  fp8_tflops_peak: 1000
+  hbm_tbps: 4.0
+  intra_link_gbps: 2000
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A5; L1 512KB, UB 248KB, L0C 256KB; sources: npu-hardware-params.md
+    §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md §2.5 DAV_3510
+    — Ascend950DT / Ascend950PR 系列'
+950PR-PCIE:
+  aliases:
+  - Ascend950PR
+  - Ascend950PR_957b
+  arch: dav-3510
+  memory_gib: 112
+  bf16_tflops_peak: 378
+  fp8_tflops_peak: 804
+  hbm_tbps: 1.4
+  intra_link_gbps: 2000
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A5; 28 cube / 56 vector cores; L1 512KB, UB 248KB, L0C 256KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.5 DAV_3510 — Ascend950DT / Ascend950PR 系列'
+950PR-Server:
+  aliases:
+  - Ascend950PR
+  - Ascend950PR_9589
+  arch: dav-3510
+  memory_gib: 128
+  bf16_tflops_peak: 432
+  fp8_tflops_peak: 865
+  hbm_tbps: 1.6
+  intra_link_gbps: 2000
+  bf16_tflops_measured: null
+  fp8_tflops_measured: null
+  notes: 'generation A5; 32 cube / 64 vector cores; L1 512KB, UB 248KB, L0C 256KB;
+    sources: npu-hardware-params.md §0 产品映射表; npu-hardware-params.md §1 跨架构一致参数; npu-hardware-params.md
+    §2.5 DAV_3510 — Ascend950DT / Ascend950PR 系列'

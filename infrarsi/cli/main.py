@@ -68,6 +68,12 @@ def _needs(module: str, what: str):
     return importlib.import_module(module)
 
 
+def cmd_ascend(a):
+    """`infrarsi ascend ...`: chips, kernels, doctor, bench, prompt (Ascend edition)."""
+    from infrarsi.ascend import cli as ascend_cli
+    return ascend_cli.main(a.rest)
+
+
 def cmd_discover(a):
     from infrarsi.discover import default_profile, hardware_profile, workload_facts
     out = {}
@@ -1407,7 +1413,7 @@ def _version() -> str:
         return 'unknown (not installed)'
 
 
-ALL_CMDS = ('optimize', 'init', 'doctor', 'run', 'report', 'apply', 'finish', 'requirements', 'exp', 'agent', *RESEARCH)
+ALL_CMDS = ('optimize', 'init', 'doctor', 'run', 'report', 'apply', 'finish', 'requirements', 'exp', 'agent', 'ascend', *RESEARCH)
 
 
 class _Parser(argparse.ArgumentParser):
@@ -1418,6 +1424,8 @@ class _Parser(argparse.ArgumentParser):
         raw = [str(x) for x in (sys.argv[1:] if args is None else args)]
         if raw and raw[0] == 'agent':                    # its own parser reads the rest (an option first too: `agent -h`)
             return argparse.Namespace(cmd='agent', rest=raw[1:], fn=cmd_agent)
+        if raw and raw[0] == 'ascend':                   # same for the Ascend edition's own subcommands
+            return argparse.Namespace(cmd='ascend', rest=raw[1:], fn=cmd_ascend)
         if raw and raw[0] not in ALL_CMDS and raw[0] not in ('-h', '--help', '--version'):
             raw = ['optimize', *raw]
         return super().parse_args(raw, namespace)
@@ -1602,6 +1610,10 @@ def build() -> argparse.ArgumentParser:
                             'note, stop, resume (`infrarsi agent -h`)')
     p.add_argument('rest', nargs=argparse.REMAINDER)
     p.set_defaults(fn=cmd_agent)
+    p = sub.add_parser('ascend', add_help=False,
+                       help='Ascend NPU edition: chips, kernels, doctor, bench, prompt (`infrarsi ascend -h`)')
+    p.add_argument('rest', nargs=argparse.REMAINDER)
+    p.set_defaults(fn=cmd_ascend)
     p = sub.add_parser('discover')
     p.add_argument('--nodes')
     p.add_argument('--task')

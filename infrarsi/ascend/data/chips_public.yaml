@@ -1,0 +1,319 @@
+# Public-spec supplement to the repository extraction.
+#
+# The kernel repositories state architecture-level facts (on-chip memories,
+# arch ids, core ratios) but not every SKU's memory size or TFLOPS.  This file
+# fills only those gaps, and every value carries the public source it came from.
+# It never overrides a non-derived value extracted from the repositories; it
+# does override a value the model *derived* from a formula when a vendor or
+# measured figure exists.
+#
+# Confidence: high = vendor/product table; medium = two independent public
+# sources agree; low = one secondary source or a family-level figure.
+
+910B1:
+  memory_gib: 64
+  memory_type: HBM2e
+  hbm_tbps: 1.6
+  bf16_tflops_peak: 400
+  fp16_tflops_peak: 400
+  int8_tops: 800
+  cube_cores: 24
+  vector_cores: 48
+  cube_freq_ghz: 1.8
+  l2_mb: 192
+  tdp_w: 310
+  intra_link: HCCS
+  intra_link_gbps: 392
+  inter_link: RoCE
+  inter_link_gbps: 50
+  confidence: medium
+  sources:
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+    - https://cset.georgetown.edu/publication/pushing-the-limits-huaweis-ai-chip-tests-u-s-export-controls
+
+910B2:
+  memory_gib: 64
+  memory_type: HBM2e
+  hbm_tbps: 1.6
+  bf16_tflops_peak: 376
+  fp16_tflops_peak: 376
+  fp32_tflops_peak: 94
+  int8_tops: 752
+  cube_cores: 24
+  vector_cores: 48
+  cube_freq_ghz: 1.8
+  l2_mb: 192
+  tdp_w: 310
+  intra_link: HCCS
+  intra_link_gbps: 392
+  inter_link: RoCE
+  inter_link_gbps: 50
+  confidence: high
+  sources:
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+    - https://cset.georgetown.edu/publication/pushing-the-limits-huaweis-ai-chip-tests-u-s-export-controls
+  note: "The 353T in npu-arch-guide is the 24-core x 1.8GHz cube formula; the product table gives 376T for this SKU."
+
+910B3:
+  memory_gib: 64
+  memory_type: HBM2e
+  hbm_tbps: 1.6
+  bf16_tflops_peak: 313
+  fp16_tflops_peak: 313
+  int8_tops: 626
+  cube_cores: 20
+  vector_cores: 40
+  cube_freq_ghz: 1.8
+  l2_mb: 192
+  tdp_w: 310
+  intra_link: HCCS
+  intra_link_gbps: 392
+  inter_link: RoCE
+  inter_link_gbps: 50
+  confidence: medium
+  sources:
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+    - https://cset.georgetown.edu/publication/pushing-the-limits-huaweis-ai-chip-tests-u-s-export-controls
+
+910B4:
+  memory_gib: 32
+  memory_type: HBM2e
+  hbm_tbps: 0.8
+  bf16_tflops_peak: 280
+  fp16_tflops_peak: 280
+  int8_tops: 560
+  cube_cores: 20
+  vector_cores: 40
+  cube_freq_ghz: 1.65
+  l2_mb: 96
+  tdp_w: 310
+  intra_link: HCCS
+  intra_link_gbps: 392
+  inter_link: RoCE
+  inter_link_gbps: 50
+  confidence: high
+  sources:
+    - https://github.com/OminiX-ai/OminiX-Ascend/blob/main/docs/ascend_910b4_datasheet.md
+    - https://cset.georgetown.edu/publication/pushing-the-limits-huaweis-ai-chip-tests-u-s-export-controls
+
+910B2C:
+  memory_gib: 64
+  memory_type: HBM2e
+  hbm_tbps: 1.6
+  bf16_tflops_peak: 376
+  fp16_tflops_peak: 376
+  cube_cores: 24
+  vector_cores: 48
+  cube_freq_ghz: 1.8
+  l2_mb: 192
+  intra_link: HCCS
+  intra_link_gbps: 392
+  confidence: low
+  sources:
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+  note: "A 910B2 variant; the public tables do not list it separately."
+
+'910_93':
+  memory_gib: 128
+  memory_type: HBM3
+  hbm_tbps: 3.2
+  bf16_tflops_peak: 800
+  fp16_tflops_peak: 800
+  int8_tops: 1600
+  cube_freq_ghz: 1.8
+  intra_link: UB
+  intra_link_gbps: 784
+  inter_link: UB
+  inter_link_gbps: 784
+  tdp_w: 600
+  confidence: medium
+  sources:
+    - https://flopper.io/gpu/huawei-ascend-910c
+    - https://www.koenli.com/3c9d5bd1.html
+  note: "Dual-die 910B (910C). Per-die 24 cube cores; the package exposes 2 dies, so core counts are not comparable to a single-die 910B."
+
+950PR-PCIE:
+  memory_gib: 112
+  memory_type: HBM
+  hbm_tbps: 1.4
+  bf16_tflops_peak: 378
+  fp16_tflops_peak: 378
+  fp8_tflops_peak: 804
+  fp4_tflops_peak: 1561
+  cube_cores: 28
+  vector_cores: 56
+  cube_freq_ghz: 1.65
+  l2_mb: 112
+  l1_kb: 512
+  l0a_kb: 64
+  l0b_kb: 64
+  l0c_kb: 256
+  ub_kb: 248
+  bt_kb: 4
+  sparsity: false
+  intra_link: UB
+  intra_link_gbps: 2000
+  confidence: medium
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-arch-guide.md
+    - https://www.glennklockwood.com/garden/processors/ascend-910
+
+950PR-Server:
+  memory_gib: 128
+  memory_type: HBM
+  hbm_tbps: 1.6
+  bf16_tflops_peak: 432
+  fp16_tflops_peak: 432
+  fp8_tflops_peak: 865
+  fp4_tflops_peak: 1730
+  cube_cores: 32
+  vector_cores: 64
+  cube_freq_ghz: 1.65
+  l2_mb: 128
+  l1_kb: 512
+  l0a_kb: 64
+  l0b_kb: 64
+  l0c_kb: 256
+  ub_kb: 248
+  bt_kb: 4
+  sparsity: false
+  intra_link: UB
+  intra_link_gbps: 2000
+  confidence: medium
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-arch-guide.md
+    - https://www.glennklockwood.com/garden/processors/ascend-910
+
+950DT:
+  memory_gib: 144
+  memory_type: HBM HiZQ 2.0
+  hbm_tbps: 4.0
+  bf16_tflops_peak: 547
+  fp16_tflops_peak: 547
+  fp8_tflops_peak: 1000
+  fp4_tflops_peak: 2000
+  l1_kb: 512
+  l0a_kb: 64
+  l0b_kb: 64
+  l0c_kb: 256
+  ub_kb: 248
+  bt_kb: 4
+  sparsity: false
+  intra_link: UB
+  intra_link_gbps: 2000
+  confidence: low
+  sources:
+    - https://www.glennklockwood.com/garden/processors/ascend-910
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+
+310P1:
+  memory_gib: 24
+  memory_type: LPDDR4X
+  hbm_tbps: 0.2
+  l1_kb: 1024
+  l0c_kb: 256
+  ub_kb: 256
+  l2_mb: 16
+  sparsity: false
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310P3:
+  memory_gib: 24
+  memory_type: LPDDR4X
+  hbm_tbps: 0.2
+  l1_kb: 1024
+  l0c_kb: 256
+  ub_kb: 256
+  l2_mb: 16
+  sparsity: false
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310P5:
+  memory_gib: 24
+  memory_type: LPDDR4X
+  hbm_tbps: 0.2
+  l1_kb: 1024
+  l0c_kb: 256
+  ub_kb: 256
+  l2_mb: 16
+  sparsity: false
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310P7:
+  memory_gib: 24
+  memory_type: LPDDR4X
+  hbm_tbps: 0.2
+  l1_kb: 1024
+  l0c_kb: 256
+  ub_kb: 256
+  l2_mb: 16
+  sparsity: false
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310B1:
+  l1_kb: 1024
+  l0c_kb: 128
+  ub_kb: 248
+  bt_kb: 1
+  l2_mb: 4
+  sparsity: true
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310B2:
+  l1_kb: 1024
+  l0c_kb: 128
+  ub_kb: 248
+  bt_kb: 1
+  l2_mb: 4
+  sparsity: true
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310B3:
+  l1_kb: 1024
+  l0c_kb: 128
+  ub_kb: 248
+  bt_kb: 1
+  l2_mb: 4
+  sparsity: true
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+310B4:
+  l1_kb: 1024
+  l0c_kb: 128
+  ub_kb: 248
+  bt_kb: 1
+  l2_mb: 4
+  sparsity: true
+  confidence: low
+  sources:
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
+
+'910':
+  memory_gib: 32
+  hbm_tbps: 1.5
+  bf16_tflops_peak: 256
+  fp16_tflops_peak: 256
+  int8_tops: 512
+  l1_kb: 1024
+  l0c_kb: 256
+  ub_kb: 256
+  l2_mb: 32
+  sparsity: false
+  confidence: low
+  sources:
+    - https://blog.ailemon.net/2025/05/24/huawei-ascend-npu-params-for-ai
+    - https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/external/cannbot/ops/npu-arch/references/npu-hardware-params.md
