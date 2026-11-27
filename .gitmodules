@@ -1,0 +1,39 @@
+[submodule "third_party/pto-kernels"]
+	path = third_party/pto-kernels
+	url = https://github.com/huawei-csl/pto-kernels.git
+[submodule "third_party/pto-isa"]
+	path = third_party/pto-isa
+	url = https://github.com/PTO-ISA/pto-isa.git
+[submodule "third_party/DeepGEMM-Ascend"]
+	path = third_party/DeepGEMM-Ascend
+	url = https://github.com/deepseek-ai/DeepGEMM-Ascend.git
+[submodule "third_party/tilelang-ascend"]
+	path = third_party/tilelang-ascend
+	url = https://github.com/tile-ai/tilelang-ascend.git
+[submodule "third_party/catlass"]
+	path = third_party/catlass
+	url = https://github.com/ascend-catlass/catlass.git
+[submodule "third_party/mojo_opset"]
+	path = third_party/mojo_opset
+	url = https://github.com/Ascend/mojo_opset.git
+[submodule "third_party/FlashKDA"]
+	path = third_party/FlashKDA
+	url = https://github.com/Ascend/FlashKDA.git
+[submodule "third_party/FlashQLA"]
+	path = third_party/FlashQLA
+	url = https://github.com/Ascend/FlashQLA.git
+[submodule "third_party/DeepSelect"]
+	path = third_party/DeepSelect
+	url = https://github.com/Ascend/DeepSelect.git
+[submodule "third_party/ascend-kernel"]
+	path = third_party/ascend-kernel
+	url = https://github.com/QingCheng-AI/ascend-kernel.git
+[submodule "third_party/mamba-ascendc"]
+	path = third_party/mamba-ascendc
+	url = https://github.com/So-cean/mamba-ascendc.git
+[submodule "third_party/mskl"]
+	path = third_party/mskl
+	url = https://github.com/Ascend/mskl.git
+[submodule "third_party/triton-ascend-kernels"]
+	path = third_party/triton-ascend-kernels
+	url = https://gitcode.com/Ascend/triton-ascend-kernels.git

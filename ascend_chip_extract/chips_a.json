@@ -1,0 +1,267 @@
+{
+ "schema": "infrarsi-ascend-chips-v1",
+ "cards": [
+  {
+   "class": "910B1",
+   "aliases": [
+    "Ascend910B1",
+    "910B1"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A2",
+   "product": "Atlas A2 训练/推理",
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "sparsity": true,
+   "kernel_gen": {
+    "soc_version_flag": "Ascend910B*",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "CubeCore:VectorCore=1:2; sparsity 4:2"
+   },
+   "confidence": "high",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "pto-kernels.md Choosing the target SoC table"
+   ],
+   "missing": "memory_gib, memory_type, hbm_tbps, bf16_tflops_peak, fp16_tflops_peak, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, cube_cores, vector_cores, cube_freq_ghz, l2_mb, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.supported_dtypes, kernel_gen.dma_alignment_bytes"
+  },
+  {
+   "class": "910B2",
+   "aliases": [
+    "Ascend910B2",
+    "Ascend 910B2",
+    "910B2"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A2",
+   "product": "Atlas A2 训练/推理",
+   "memory_gib": 64,
+   "hbm_tbps": 1.6,
+   "bf16_tflops_peak": 353,
+   "fp16_tflops_peak": 353,
+   "cube_cores": 24,
+   "vector_cores": 48,
+   "cube_freq_ghz": 1.8,
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "l2_mb": 192,
+   "sparsity": true,
+   "kernel_gen": {
+    "supported_dtypes": [
+     "fp16",
+     "bf16"
+    ],
+    "soc_version_flag": "Ascend910B2",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "Cube BF16/FP16 353T; Vector FP16 22T; CubeCore:VectorCore=1:2; sparsity 4:2"
+   },
+   "confidence": "high",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-hardware-params.md §2 子型号变化参数 table",
+    "npu-hardware-params.md §4 公开资料与经验值",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "npu-arch-guide.md §3 典型硬件参数与获取方式 → 算力与系统规格 table",
+    "pto-kernels.md Choosing the target SoC table"
+   ],
+   "missing": "memory_type, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.dma_alignment_bytes"
+  },
+  {
+   "class": "910B3",
+   "aliases": [
+    "Ascend910B3",
+    "910B3"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A2",
+   "product": "Atlas A2 训练/推理",
+   "cube_cores": 20,
+   "vector_cores": 40,
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "sparsity": true,
+   "kernel_gen": {
+    "soc_version_flag": "Ascend910B*",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "CubeCore:VectorCore=1:2; sparsity 4:2; vector_cores derived from stated ratio",
+    "derived": true
+   },
+   "confidence": "medium",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "npu-arch-guide.md §3 典型硬件参数与获取方式 note",
+    "pto-kernels.md Choosing the target SoC table"
+   ],
+   "missing": "memory_gib, memory_type, hbm_tbps, bf16_tflops_peak, fp16_tflops_peak, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, cube_freq_ghz, l2_mb, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.supported_dtypes, kernel_gen.dma_alignment_bytes"
+  },
+  {
+   "class": "910B4",
+   "aliases": [
+    "Ascend910B4",
+    "910B4"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A2",
+   "product": "Atlas A2 训练/推理",
+   "memory_gib": 32,
+   "cube_cores": 20,
+   "vector_cores": 40,
+   "cube_freq_ghz": 1.5,
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "l2_mb": 96,
+   "sparsity": true,
+   "kernel_gen": {
+    "soc_version_flag": "Ascend910B*",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "CubeCore:VectorCore=1:2; sparsity 4:2; vector_cores derived from stated ratio",
+    "derived": true
+   },
+   "confidence": "medium",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "npu-arch-guide.md §3 典型硬件参数与获取方式 note",
+    "pto-kernels.md Choosing the target SoC table"
+   ],
+   "missing": "memory_type, hbm_tbps, bf16_tflops_peak, fp16_tflops_peak, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.supported_dtypes, kernel_gen.dma_alignment_bytes"
+  },
+  {
+   "class": "910B2C",
+   "aliases": [
+    "Ascend910B2C",
+    "910B2C"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A2",
+   "product": "Atlas A2 训练/推理",
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "sparsity": true,
+   "kernel_gen": {
+    "soc_version_flag": "Ascend910B*",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "CubeCore:VectorCore=1:2; sparsity 4:2"
+   },
+   "confidence": "high",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "pto-kernels.md Choosing the target SoC table"
+   ],
+   "missing": "memory_gib, memory_type, hbm_tbps, bf16_tflops_peak, fp16_tflops_peak, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, cube_cores, vector_cores, cube_freq_ghz, l2_mb, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.supported_dtypes, kernel_gen.dma_alignment_bytes"
+  },
+  {
+   "class": "910_93",
+   "aliases": [
+    "Ascend910_93",
+    "910_93"
+   ],
+   "soc_version": "ASCEND910B",
+   "npu_arch": "dav-2201",
+   "arch_id": 2201,
+   "arch_dir": "arch22",
+   "generation": "A3",
+   "product": "Atlas A3 训练/推理",
+   "cube_cores": 24,
+   "vector_cores": 48,
+   "cube_mac": "16x16x16",
+   "l1_kb": 512,
+   "l0a_kb": 64,
+   "l0b_kb": 64,
+   "l0c_kb": 128,
+   "ub_kb": 192,
+   "bt_kb": 1,
+   "sparsity": true,
+   "kernel_gen": {
+    "soc_version_flag": "Ascend910_93*",
+    "base_mode": "MEMORY",
+    "tile_shape_hint": "16x16x16 cube; L1 512KB, L0A/B 64KB, L0C 128KB, UB 192KB, BT 1KB",
+    "notes": "CubeCore:VectorCore=1:2; sparsity 4:2; vector_cores derived from stated ratio",
+    "derived": true
+   },
+   "confidence": "medium",
+   "sources": [
+    "npu-hardware-params.md §0 产品映射表",
+    "npu-hardware-params.md §0 运行时映射 note",
+    "npu-hardware-params.md §1 跨架构一致参数",
+    "npu-hardware-params.md §2.3 DAV_2201",
+    "npu-hardware-params.md §3 架构关键差异速查",
+    "npu-arch-guide.md 架构目录简写 table",
+    "npu-arch-guide.md 架构代号别名 table",
+    "pto-kernels.md Choosing the target SoC table",
+    "pto-isa.md card/arch lines"
+   ],
+   "missing": "memory_gib, memory_type, hbm_tbps, bf16_tflops_peak, fp16_tflops_peak, fp32_tflops_peak, int8_tops, fp8_tflops_peak, fp4_tflops_peak, cube_freq_ghz, l2_mb, intra_link, intra_link_gbps, inter_link, inter_link_gbps, tdp_w, kernel_gen.supported_dtypes, kernel_gen.dma_alignment_bytes"
+  }
+ ],
+ "missing_cards": [],
+ "notes": ""
+}
