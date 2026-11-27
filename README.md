@@ -121,5 +121,7 @@ git submodule update --init --recursive --depth 1
 
 ## License
 
-本仓库的 Ascend 改造代码沿用上游 InfraRSI 的许可证；`third_party/` 下每个 submodule
-按其自身 LICENSE 授权。
+上游 [TokenRhythm/InfraRSI](https://github.com/TokenRhythm/InfraRSI) 仓库目前没有声明 LICENSE；本仓库的 Ascend
+改造代码随上游，使用前请与上游确认授权。`third_party/` 下每个 submodule 按其自身 LICENSE 授权
+（PTO kernels 为 BSD-3-Clause-Clear、DeepGEMM-Ascend 为 MIT、TileLang-Ascend 为 MIT、CATLASS 为 CANN Open
+Software License Agreement v2、Mojo Opset 为 Apache-2.0 等）。
